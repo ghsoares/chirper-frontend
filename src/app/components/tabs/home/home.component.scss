@@ -1,0 +1,27 @@
+@import "../tab.component.scss";
+
+:host {
+	#home-chirps {
+		flex: 1;
+		flex-direction: column;
+		align-items: stretch;
+		overflow: hidden;
+		position: relative;
+
+		#chirps-scroll {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+
+			overflow: auto;
+
+			flex-direction: column;
+			align-items: stretch;
+			flex-wrap: nowrap;
+
+			padding: 0 8px;
+		}
+	}
+}

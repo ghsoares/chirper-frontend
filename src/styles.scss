@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+	font-family: "Inter";
+	src: url("assets/fonts/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("assets/fonts/Inter/static/Inter-Medium.ttf");
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("assets/fonts/Inter/static/Inter-SemiBold.ttf");
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("assets/fonts/Inter/static/Inter-Bold.ttf");
+	font-weight: 700;
+}
+
+html {
+	font-family: "Inter";
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body, body * {
+	display: flex;
+	flex-direction: row;
+}
+
+app-root * {
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+app-root {
+	flex: 1;
+}
+
+:root {
+	--app-background-color: #23232E;
+	--tab-background-color: #3C3C53;
+	--tab-top-background-color: #56567B;
+
+	--navbar-background-color: #3C3C53;
+	--navbar-button-color: #FFF;
+
+	--tab-icon-color: #FFF;
+	--tab-title-color: #FFF;
+
+	--chirp-profile-name-color: #FFF;
+	--chirp-username-color: rgba(255, 255, 255, 0.25);
+	--chirp-elapsed-time-color: rgba(255, 255, 255, 0.25);
+	--chirp-text-color: #FFF;
+	--chirp-text-tags-color: rgba(255, 255, 255, 0.8);
+
+	--chirp-option-color: rgba(255, 255, 255, 0.75);
+
+	--chirp-border-color: rgba(255, 255, 255, 0.1);
+}

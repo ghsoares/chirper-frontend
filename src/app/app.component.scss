@@ -1,0 +1,53 @@
+#chirper-app {
+	flex: 1;
+	flex-direction: column;
+
+	background-color: var(--app-background-color);
+
+	padding: 4px;
+
+	align-items: stretch;
+
+	#tabs {
+		flex: 1;
+		flex-direction: column;
+
+		align-items: stretch;
+
+		margin-bottom: 4px;
+	}
+
+	#navbar {
+		background-color: var(--navbar-background-color);
+		border-radius: 8px;
+		padding: 8px 24px;
+		justify-content: space-between;
+
+		.navbar-button {
+			background: none;
+			border: none;
+			padding: 0;
+			width: 32px;
+			height: 32px;
+
+			background-color: var(--navbar-button-color);
+			mask-size: cover;
+
+			&#navbar-button-home {
+				mask-image: url("/assets/img/home.svg");
+			}
+
+			&#navbar-button-search {
+				mask-image: url("/assets/img/search.svg");
+			}
+
+			&#navbar-button-notification {
+				mask-image: url("/assets/img/notification.svg");
+			}
+
+			&#navbar-button-user {
+				mask-image: url("/assets/img/user.svg");
+			}
+		}
+	}
+}

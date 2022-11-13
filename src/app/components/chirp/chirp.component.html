@@ -1,0 +1,22 @@
+
+<img src="assets/img/user.svg" class="chirp-profile-pic" height="32px">
+<div class="chirp-main">
+	<div class="chirp-header">
+	<span class="chirp-profile-name">{{chirp.author.profileName}}</span>
+	<span class="chirp-username">@{{chirp.author.username}}</span>
+	<span class="chirp-elapsed-time">4h ago</span>
+	</div>
+	<p class="chirp-body" [innerHTML]="body">
+	
+	</p>
+	<div class="chirp-options">
+	<button class="chirp-option chirp-option-comment">
+		<div class="chirp-option-icon" height="16px"></div>
+		<span class="chirp-option-text">1</span>
+	</button>
+	<button class="chirp-option chirp-option-like">
+		<div class="chirp-option-icon" height="16px"></div>
+		<span class="chirp-option-text">1</span>
+	</button>
+	</div>
+</div>

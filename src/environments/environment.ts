@@ -2,9 +2,24 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { User } from "src/app/models/user";
+
+type EnvironmentVariables = {
+  production: boolean;
+  apiPath: string;
+};
+
+type GlobalVariables = {
+  user: User;
+};
+
+export const environment: EnvironmentVariables = {
   production: false,
-  apiPath: "localhost:8080/"
+  apiPath: "http://localhost:8080"
+};
+
+export const globals: GlobalVariables = {
+  user: null
 };
 
 /*

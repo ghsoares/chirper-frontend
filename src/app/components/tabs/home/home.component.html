@@ -1,0 +1,9 @@
+<div class="tab-top">
+	<div class="tab-icon"></div>
+	<span class="tab-title">Home</span>
+</div>
+<div id="home-chirps">
+	<div id="chirps-scroll">
+		<chirp *ngFor="let chirp of chirps;" [chirp]="chirp"></chirp>
+	</div>
+</div>
