@@ -1,0 +1,70 @@
+<div class="tab-top">
+	<button class="back-button">
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Login to your Chirper account</span>
+</div>
+<div class="tab-body">
+	<form [formGroup]="userForm" (submit)="login()" id="login-form">
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('username').invalid && userForm.get('username').dirty
+			}"
+		>
+			<label class="input-label" for="user-username">Username</label>
+			<input 
+				class="input-field" 
+				type="text" 
+				name="user-username" 
+				formControlName="username"
+				id="user-username" 
+				placeholder="You can use your email as well!"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('username').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('username').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('password').invalid && userForm.get('password').dirty
+			}"
+		>
+			<label class="input-label" for="user-password">Password</label>
+			<input 
+				class="input-field" 
+				type="password" 
+				formControlName="password"
+				name="user-password" 
+				id="user-password" 
+				placeholder="You remembered your password? Use it here!"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('password').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('password').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<!-- <button class="signup-send" (click)="signup()" [disabled]="body.length == 0"> -->
+			<div class="form-buttons">
+				<button class="login-send" type="submit" [disabled]="!userForm.valid || waitLogin">
+					Login
+				</button>
+				<a class="signup" routerLink="/signup">
+					Doesn't have a account? Create one!
+				</a>
+			</div>
+	</form>
+</div>
