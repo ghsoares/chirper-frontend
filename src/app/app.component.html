@@ -1,15 +1,50 @@
 <div id="chirper-app">
   <div id="tabs">
-    <tab-home></tab-home>
+    <router-outlet></router-outlet>
   </div>
   <div id="navbar">
-    <button class="navbar-button" id="navbar-button-home">
+    <button 
+      class="navbar-button" 
+      id="navbar-button-home" 
+      (click)="navigateTo('/home')"
+      [ngClass]="{
+        'nav-active': currentRoute.startsWith('/home')
+      }"
+    >
     </button>
-    <button class="navbar-button" id="navbar-button-search">
+    <button 
+      class="navbar-button" 
+      id="navbar-button-search" 
+      (click)="navigateTo('/search')"
+      [ngClass]="{
+        'nav-active': currentRoute.startsWith('/search')
+      }"
+    >
     </button>
-    <button class="navbar-button" id="navbar-button-notification">
+    <button 
+      class="navbar-button" 
+      id="navbar-button-user" 
+      (click)="navigateTo('/user')"
+      [ngClass]="{
+        'nav-active': currentRoute.startsWith('/user')
+      }"
+    >
     </button>
-    <button class="navbar-button" id="navbar-button-user">
+  </div>
+  <div id="authenticate" *ngIf="!userService.isAuthenticated()">
+    <button 
+      class="authenticate-button" 
+      id="authenticate-button-login" 
+      (click)="navigateTo('/login')"
+    >
+      Login
+    </button>
+    <button 
+      class="authenticate-button" 
+      id="authenticate-button-signup" 
+      (click)="navigateTo('/signup')"
+    >
+      Register
     </button>
   </div>
 </div>
