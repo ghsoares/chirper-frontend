@@ -1,7 +1,39 @@
-@import "../tab.component.scss";
-
 :host {
-	#home-chirps {
+	flex: 1;
+	flex-direction: column;
+	align-items: stretch;
+
+	background-color: var(--tab-background-color);
+	border-radius: 8px;
+	padding-bottom: 8px;
+	position: relative;
+
+	.tab-top {
+		padding: 8px;
+		background-color: var(--tab-top-background-color);
+		border-radius: 8px;
+		margin-bottom: 8px;
+		align-items: center;
+
+		.tab-icon {
+			width: 16px;
+			height: 16px;
+			mask-image: url("/assets/img/home.svg");
+			mask-size: cover;
+			background-color: var(--tab-icon-color);
+		}
+
+		.tab-title {
+			color: var(--tab-title-color);
+			font-weight: 700;
+			font-size: 16px;
+			vertical-align: text-bottom;
+			line-height: 19px;
+			margin-left: 8px;
+		}
+	}
+
+	.tab-body {
 		flex: 1;
 		flex-direction: column;
 		align-items: stretch;
@@ -24,4 +56,22 @@
 			padding: 0 8px;
 		}
 	}
+
+	#create-chirp {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		background-color: var(--create-chirp-background-color);
+		border-radius: 9999px;
+		border: 0;
+		padding: 12px;
+		#create-chirp-icon {
+			mask-image: url("/assets/img/newChirp.svg");
+			mask-size: cover;
+			background-color: var(--create-chirp-icon-color);
+			width: 32px;
+			height: 32px;
+		}
+	}
 }
+

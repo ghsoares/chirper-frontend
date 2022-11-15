@@ -2,8 +2,15 @@
 	<div class="tab-icon"></div>
 	<span class="tab-title">Home</span>
 </div>
-<div id="home-chirps">
+<div class="tab-body" id="home-chirps">
 	<div id="chirps-scroll">
-		<chirp *ngFor="let chirp of chirps;" [chirp]="chirp"></chirp>
+		<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
 	</div>
 </div>
+<button 
+	id="create-chirp" 
+	*ngIf="userService.isAuthenticated()"
+	(click)="createChirp()"
+>
+	<div id="create-chirp-icon"></div>
+</button>
