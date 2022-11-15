@@ -1,0 +1,58 @@
+:host {
+	&:not(:last-child) {
+		margin-bottom: 16px;
+		padding-bottom: 16px;
+		border-bottom: 2px solid var(--chirp-border-color);
+	}
+
+	.user-info {
+		margin-left: 8px;
+		flex-direction: column;
+		flex: 1;
+		align-items: stretch;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	
+		.user-profile-name {
+			color: var(--user-profile-name-color);
+			font-size: 14px;
+			font-weight: 700;
+			margin-right: 4px;
+			max-width: 100%;
+			flex-wrap: nowrap;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: unset;
+		}
+
+		.user-username {
+			color: var(--user-username-color);
+			font-size: 14px;
+			font-weight: 700;
+			margin-right: 4px;
+			max-width: 100%;
+			flex-wrap: nowrap;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: unset;
+		}
+
+		.user-bio {
+			margin: 0;
+			padding: 0;
+			margin-top: 4px;
+			color: var(--user-bio-color);
+		}
+	}
+	.user-follow {
+		font-size: 16px;
+		font-weight: 700;
+		background: none;
+		padding: 4px 8px;
+		background-color: var(--main-button-background-color);
+		color: var(--main-button-color);
+		border-radius: 8px;
+	}
+}
