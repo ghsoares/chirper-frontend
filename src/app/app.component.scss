@@ -4,9 +4,10 @@
 
 	background-color: var(--app-background-color);
 
-	padding: 4px;
+	padding: 8px;
 
 	align-items: stretch;
+	flex-wrap: nowrap;
 
 	#tabs {
 		flex: 1;
@@ -14,7 +15,7 @@
 
 		align-items: stretch;
 
-		margin-bottom: 4px;
+		margin-bottom: 8px;
 	}
 
 	#navbar {
@@ -33,6 +34,14 @@
 			background-color: var(--navbar-button-color);
 			mask-size: cover;
 
+			&.nav-active {
+				background-color: var(--navbar-button-active-color);
+			}
+
+			&:not(.nav-active) {
+				transform: scale(95%);
+			}
+
 			&#navbar-button-home {
 				mask-image: url("/assets/img/home.svg");
 			}
@@ -47,6 +56,33 @@
 
 			&#navbar-button-user {
 				mask-image: url("/assets/img/user.svg");
+			}
+		}
+	}
+
+	#authenticate {
+		background-color: var(--navbar-background-color);
+		border-radius: 8px;
+		padding: 8px 24px;
+		margin-top: 8px;
+
+		.authenticate-button {
+			flex: 1;
+			font-size: 20px;
+			font-weight: 700;
+			border: none;
+			padding: 4px 8px;
+			background-color: var(--create-chirp-send-background-color);
+			color: var(--create-chirp-send-color);
+			border-radius: 8px;
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			&:disabled {
+				opacity: 0.5;
+			}
+			&:not(:last-child) {
+				margin-right: 32px;
 			}
 		}
 	}
