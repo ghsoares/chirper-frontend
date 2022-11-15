@@ -21,20 +21,23 @@
 	font-weight: 700;
 }
 
-html {
-	font-family: "Inter";
-}
-
 html, body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 body, body * {
 	display: flex;
 	flex-direction: row;
+	font-family: "Inter";
+}
+
+app-root {
+	flex: 1;
+	overflow: hidden;
 }
 
 app-root * {
@@ -43,23 +46,52 @@ app-root * {
 	flex-wrap: wrap;
 }
 
-app-root {
-	flex: 1;
-}
-
 :root {
 	--app-background-color: #23232E;
 	--tab-background-color: #3C3C53;
 	--tab-top-background-color: #56567B;
+	--main-button-background-color: #8484FF;
+	--main-button-color: #23232E;
+	--back-button-color: #FFF;
+
+	--form-input-label-color: #FFF;
+	--form-input-color: #FFF;
+	--form-input-border-color: rgba(255, 255, 255, 0.2);
+	--form-input-active-border-color: rgba(255, 255, 255, 0.75);
+	--form-input-invalid-border-color: rgba(255, 155, 185, 0.75);
+
+	--form-input-error-color: #ff9bb9;
+
+	--create-chirp-background-color: #8484FF;
+	--create-chirp-icon-color: #23232E;
+	--create-chirp-body-color: #FFF;
+	--create-chirp-body-border-color: rgba(255, 255, 255, 0.25);
+	--create-chirp-send-background-color: #8484FF;
+	--create-chirp-send-color: #23232E;
 
 	--navbar-background-color: #3C3C53;
-	--navbar-button-color: #FFF;
+	--navbar-button-color: rgba(255, 255, 255, 0.5);
+	--navbar-button-active-color: #FFF;
 
 	--tab-icon-color: #FFF;
 	--tab-title-color: #FFF;
 
-	--chirp-profile-name-color: #FFF;
-	--chirp-username-color: rgba(255, 255, 255, 0.25);
+	--search-input-background-color: #3C3C53;
+	--search-input-placeholder-color: rgba(255, 255, 255, 0.1);
+	--search-input-icon-color: rgba(255, 255, 255, 0.2);
+	--search-input-color: #FFF;
+	--search-category-color: #FFF;
+	--search-category-border-color: #3C3C53;
+
+	--search-empty-text-color: #FFF;
+
+	--search-section-border-color: rgba(255, 255, 255, 0.1);
+	--search-section-title-color: #FFF;
+
+	--user-profile-name-color: #FFF;
+	--user-username-color: rgba(255, 255, 255, 0.25);
+	--user-bio-color: #FFF;
+
 	--chirp-elapsed-time-color: rgba(255, 255, 255, 0.25);
 	--chirp-text-color: #FFF;
 	--chirp-text-tags-color: rgba(255, 255, 255, 0.8);
