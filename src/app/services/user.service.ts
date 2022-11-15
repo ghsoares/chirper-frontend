@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment, globals } from 'src/environments/environment';
 import { User } from '../models/user';
 
@@ -15,11 +15,15 @@ export class UserService {
   }
 
   public registerUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiPath}/user/register`, user);
+    return this.http.post<User>(`${this.apiPath}/user/register`, user).pipe(
+      map(res => new User(res))
+    );
   }
 
   public loginUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiPath}/user/login`, user);
+    return this.http.post<User>(`${this.apiPath}/user/login`, user).pipe(
+      map(res => new User(res))
+    );
   }
 
   public updateUser(user: User): Observable<User> {
@@ -32,7 +36,30 @@ export class UserService {
       }
     }
 
-    return this.http.put<User>(`${this.apiPath}/user/update`, user, options);
+    return this.http.put<User>(`${this.apiPath}/user/update`, user, options).pipe(
+      map(res => new User(res))
+    );
+  }
+
+  public updateUserPassword(newPassword: string): Observable<User> {
+    let options = {};
+
+    if (this.isAuthenticated()) {
+      options = {
+        headers: new HttpHeaders()
+          .set("Authorization", globals.user.token)
+      }
+    }
+
+    return this.http.put<User>(`${this.apiPath}/user/update-password?new-password=${newPassword}`, null, options).pipe(
+      map(res => new User(res))
+    );
+  }
+
+  public searchByQuery(query: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiPath}/user/search?query=${query}`).pipe(
+      map(res => res.map(v => new User(v)))
+    );
   }
 
   public authUser(user: User): void {
