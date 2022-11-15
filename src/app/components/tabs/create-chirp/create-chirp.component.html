@@ -1,0 +1,23 @@
+<div class="tab-top">
+	<button class="back-button">
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Chirp something</span>
+</div>
+<div class="tab-body">
+	<img src="assets/img/user.svg" class="user-profile-pic" height="48px">
+	<div class="chirp-info">
+		<textarea 
+			name="chirp-body" 
+			cols="30" 
+			rows="5" 
+			class="chirp-body" 
+			placeholder="What's going on?"
+			[(ngModel)]="body"
+		></textarea>
+		<button class="chirp-button" (click)="chirp()" [disabled]="body.length == 0 || waitCreate">
+			Chirp
+		</button>
+	</div>
+</div>
