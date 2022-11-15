@@ -1,0 +1,40 @@
+<div class="tab-top">
+	<!-- <div class="tab-icon"></div>
+	<span class="tab-title">Search</span> -->
+	<div id="search-input-container">
+		<div id="search-icon"></div>
+		<input type="text" placeholder="Search for tags, users, etc." id="search-input" [ngModel]="query" (change)="setQuery($event)"/>
+	</div>
+	<div id="search-categories" *ngIf="query.length > 0">
+		<button 
+			class="search-category" 
+			id="search-category-all"
+			[ngClass]="{'search-category-current': category == 0}"
+			(click)="setCategory(0)"
+		>All</button>
+		<!-- <button class="search-category" id="search-category-latest">Latest</button> -->
+		<button 
+			class="search-category" 
+			id="search-category-chirps"
+			[ngClass]="{'search-category-current': category == 1}"
+			(click)="setCategory(1)"
+		>Chirps</button>
+		<button 
+			class="search-category" 
+			id="search-category-users"
+			[ngClass]="{'search-category-current': category == 2}"
+			(click)="setCategory(2)"
+		>Users</button>
+	</div>
+</div>
+<div class="tab-body" id="search-result">
+	<div class="empty-query" *ngIf="query.length == 0">
+		<span class="empty-query-title">Search on Chirper</span>
+		<span class="empty-query-text">Use the search above to search for chirps or users</span>
+	</div>
+	<ng-container *ngIf="query.length > 0">
+		<tab-search-top [query]="query" *ngIf="category == 0"></tab-search-top>
+		<tab-search-chirps [query]="query" *ngIf="category == 1"></tab-search-chirps>
+		<tab-search-users [query]="query" *ngIf="category == 2"></tab-search-users>
+	</ng-container>
+</div>
