@@ -1,8 +1,7 @@
 :host {
-	margin-bottom: 16px;
-	padding-bottom: 16px;
-
 	&:not(:last-child) {
+		margin-bottom: 16px;
+		padding-bottom: 16px;
 		border-bottom: 2px solid var(--chirp-border-color);
 	}
 
@@ -16,7 +15,7 @@
 			font-size: 14px;
 
 			.chirp-profile-name {
-				color: var(--chirp-profile-name-color);
+				color: var(--user-profile-name-color);
 				font-weight: 700;
 				margin-right: 4px;
 				flex-wrap: nowrap;
@@ -28,7 +27,7 @@
 			}
 
 			.chirp-username {
-				color: var(--chirp-username-color);
+				color: var(--user-username-color);
 				font-weight: 600;
 				overflow: hidden;
 				max-width: 40%;
@@ -90,6 +89,11 @@
 				&.chirp-option-like {
 					.chirp-option-icon {
 						mask-image: url("/assets/img/like.svg");
+					}
+				}
+				&.chirp-option-other {
+					.chirp-option-icon {
+						mask-image: url("/assets/img/options.svg");
 					}
 				}
 			}

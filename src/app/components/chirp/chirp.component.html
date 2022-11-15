@@ -11,12 +11,12 @@
 	</p>
 	<div class="chirp-options">
 	<button class="chirp-option chirp-option-comment">
-		<div class="chirp-option-icon" height="16px"></div>
-		<span class="chirp-option-text">1</span>
+		<div class="chirp-option-icon"></div>
+		<span class="chirp-option-text" *ngIf="chirp.replies.length > 0">{{chirp.replies.length}}</span>
 	</button>
 	<button class="chirp-option chirp-option-like">
-		<div class="chirp-option-icon" height="16px"></div>
-		<span class="chirp-option-text">1</span>
+		<div class="chirp-option-icon"></div>
+		<span class="chirp-option-text"*ngIf="chirp.likes.length > 0">{{chirp.likes.length}}</span>
 	</button>
 	</div>
 </div>
