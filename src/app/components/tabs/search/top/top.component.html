@@ -1,0 +1,18 @@
+<div class="result-scroll">
+	<div class="empty-result" *ngIf="chirps.length == 0 && users.length == 0">
+		<span class="empty-result-title">Couldn't find nothing</span>
+		<span class="empty-result-text">Try to change the search text</span>
+	</div>
+	<div class="result-section" *ngIf="chirps.length > 0">
+		<span class="result-section-title">Top Chirps</span>
+		<div class="result-container">
+			<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
+		</div>
+	</div>
+	<div class="result-section" *ngIf="users.length > 0">
+		<span class="result-section-title">Top Users</span>
+		<div class="result-container">
+			<user *ngFor="let user of users" [user]="user"></user>
+		</div>
+	</div>
+</div>

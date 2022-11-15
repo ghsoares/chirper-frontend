@@ -1,0 +1,9 @@
+<div class="result-scroll">
+	<div class="empty-result" *ngIf="chirps.length == 0 && chirps.length == 0">
+		<span class="empty-result-title">Couldn't find any chirp</span>
+		<span class="empty-result-text">Try to change the search text</span>
+	</div>
+	<div class="result-container">
+		<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
+	</div>
+</div>
