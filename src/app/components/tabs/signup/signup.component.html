@@ -1,0 +1,173 @@
+<div class="tab-top">
+	<button class="back-button">
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Signup to Chirper</span>
+</div>
+<div class="tab-body">
+	<form [formGroup]="userForm" (submit)="signup()" id="signup-form">
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('profileName').invalid && userForm.get('profileName').dirty
+			}"
+		>
+			<label class="input-label" for="user-profile-name">Profile name</label>
+			<input 
+				class="input-field" 
+				type="text" 
+				name="user-profile-name" 
+				formControlName="profileName"
+				id="user-profile-name" 
+				placeholder="Name displayed on your account"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('profileName').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('profileName').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('username').invalid && userForm.get('username').dirty
+			}"
+		>
+			<label class="input-label" for="user-username">Username</label>
+			<input 
+				class="input-field" 
+				type="text" 
+				name="user-username" 
+				formControlName="username"
+				id="user-username" 
+				placeholder="Unique name for other to reach you"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('username').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('username').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('email').invalid && userForm.get('email').dirty
+			}"
+		>
+			<label class="input-label" for="user-email">Email</label>
+			<input 
+				class="input-field" 
+				type="email" 
+				name="user-email" 
+				formControlName="email"
+				id="user-email" 
+				placeholder="Your email you would like to use"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('email').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('email').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('birthDate').invalid && userForm.get('birthDate').dirty
+			}"
+		>
+			<label class="input-label" for="user-birth-date">Birth date</label>
+			<input 
+				class="input-field" 
+				type="date" 
+				formControlName="birthDate"
+				name="user-birth-date" 
+				id="user-birth-date"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('birthDate').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('birthDate').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('password').invalid && userForm.get('password').dirty
+			}"
+		>
+			<label class="input-label" for="user-password">Password</label>
+			<input 
+				class="input-field" 
+				type="password" 
+				formControlName="password"
+				name="user-password" 
+				id="user-password" 
+				placeholder="Remember your password!"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('password').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('password').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('confirmPassword').invalid && userForm.get('confirmPassword').dirty
+			}"
+		>
+			<label class="input-label" for="user-password-confirm">Confirm password</label>
+			<input 
+				class="input-field" 
+				type="password" 
+				formControlName="confirmPassword"
+				name="user-password-confirm" 
+				id="user-password-confirm" 
+				placeholder="Confirm the same password you used above"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('confirmPassword').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('confirmPassword').hasError('required')"
+				>This field is required</span>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('confirmPassword').hasError('notMatch')"
+				>Passwords doesn't match!</span>
+			</div>
+		</div>
+		<!-- <button class="signup-send" (click)="signup()" [disabled]="body.length == 0"> -->
+		<div class="form-buttons">
+			<button class="signup-send" type="submit" [disabled]="!userForm.valid || waitSignup">
+				Signup
+			</button>
+			<a class="login" routerLink="/login">
+				Already have a account? Access it here!
+			</a>
+		</div>
+	</form>
+</div>
