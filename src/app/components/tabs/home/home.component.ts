@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Chirp } from 'src/app/models/chirp';
 import { ChirpService } from 'src/app/services/chirp.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'tab-home',
@@ -12,12 +14,16 @@ export class HomeComponent implements OnInit {
 
   chirps: Chirp[];
 
-  constructor(private chirpService: ChirpService) { }
+  constructor(
+    public userService: UserService,
+    private chirpService: ChirpService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.chirps = [];
 
-    this.chirpService.getAll().subscribe({
+    this.chirpService.listNotReply().subscribe({
       next: chirps => {
         this.chirps = chirps;
       },
@@ -27,4 +33,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  createChirp() {
+    this.router.navigate(['/new-chirp']);
+  }
 }
