@@ -6,13 +6,21 @@
 	<div class="result-section" *ngIf="chirps.length > 0">
 		<span class="result-section-title">Top Chirps</span>
 		<div class="result-container">
-			<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
+			<chirp 
+				*ngFor="let chirp of chirps" 
+				[chirp]="chirp"
+				(click)="viewChirp(chirp.chirpId)"
+			></chirp>
 		</div>
 	</div>
 	<div class="result-section" *ngIf="users.length > 0">
 		<span class="result-section-title">Top Users</span>
 		<div class="result-container">
-			<user *ngFor="let user of users" [user]="user"></user>
+			<user 
+				*ngFor="let user of users" 
+				[user]="user"
+				(click)="viewUser(user.userId)"
+			></user>
 		</div>
 	</div>
 </div>
