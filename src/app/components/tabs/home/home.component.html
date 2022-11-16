@@ -4,7 +4,11 @@
 </div>
 <div class="tab-body" id="home-chirps">
 	<div id="chirps-scroll">
-		<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
+		<chirp 
+			*ngFor="let chirp of chirps" 
+			[chirp]="chirp"
+			(click)="viewChirp(chirp.chirpId)"
+		></chirp>
 	</div>
 </div>
 <button 
