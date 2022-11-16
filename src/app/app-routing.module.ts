@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateChirpComponent } from './components/tabs/create-chirp/create-chirp.component';
+import { EditChirpComponent } from './components/tabs/edit-chirp/edit-chirp.component';
 import { HomeComponent } from './components/tabs/home/home.component';
 import { LoginComponent } from './components/tabs/login/login.component';
 import { LogoutComponent } from './components/tabs/logout/logout.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'new-chirp', component: CreateChirpComponent },
   { path: 'view-chirp', component: ViewChirpComponent },
   { path: 'view-user', component: ViewUserComponent },
+  { path: 'edit-chirp', component: EditChirpComponent },
   { path: 'reply-chirp', component: ReplyChirpComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },

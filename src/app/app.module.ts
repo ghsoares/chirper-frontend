@@ -23,6 +23,7 @@ import { UpdateUserPasswordComponent } from './components/tabs/update-user-passw
 import { LogoutComponent } from './components/tabs/logout/logout.component';
 import { ProfileComponent } from './components/tabs/profile/profile.component';
 import { AlertModule } from './ui/alert/alert.module';
+import { EditChirpComponent } from './components/tabs/edit-chirp/edit-chirp.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AlertModule } from './ui/alert/alert.module';
     UpdateUserInfoComponent,
     UpdateUserPasswordComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditChirpComponent
   ],
   imports: [
     BrowserModule,

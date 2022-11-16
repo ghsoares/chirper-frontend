@@ -1,0 +1,35 @@
+<div class="tab-top">
+	<button 
+		class="back-button"
+		(click)="goBack()"
+	>
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Edit chirp</span>
+</div>
+<div class="tab-body">
+	<div id="loading-chirp" *ngIf="waitLoadChirp">
+		<span id="loading-title">Loading Chirp</span>
+		<div class="loading-spinner"></div>
+	</div>
+	<div 
+		class="chirp-container"
+		*ngIf="!waitLoadChirp"
+	>
+		<img src="assets/img/user.svg" class="user-profile-pic" height="48px">
+		<div class="chirp-info">
+			<textarea 
+				name="chirp-body" 
+				cols="30" 
+				rows="5" 
+				class="chirp-body" 
+				placeholder="What's going on?"
+				[(ngModel)]="body"
+			></textarea>
+			<button class="chirp-button" (click)="save()" [disabled]="body.length == 0 || waitSave">
+				Save
+			</button>
+		</div>
+	</div>
+</div>

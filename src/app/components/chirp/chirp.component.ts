@@ -16,6 +16,7 @@ export class ChirpComponent implements OnInit, OnDestroy {
   private _chirp: Chirp;
 
   loggedUserLiked: boolean = false;
+  loggedUserChirp: boolean = false;
   waitLike: boolean = false;
   elapsedDisplay: string = "";
   updateInterval: NodeJS.Timeout = null;
@@ -27,9 +28,11 @@ export class ChirpComponent implements OnInit, OnDestroy {
   set chirp(val: Chirp) {
     this._chirp = val;
     this.loggedUserLiked = false;
+    this.loggedUserChirp = false;
     if (val != null) {
       if (this.userService.isAuthenticated()) {
         let userId: number = globals.user.userId;
+        this.loggedUserChirp = val.author?.userId == userId;
         for (const like of val.likes) {
           if (like.userId == userId) {
             this.loggedUserLiked = true;
@@ -123,6 +126,18 @@ export class ChirpComponent implements OnInit, OnDestroy {
     event.stopPropagation();
 
     this.navigationService.navigate(['/reply-chirp'], {
+      queryParams: {
+        'chirp-id': this.chirp.chirpId
+      }
+    })
+  }
+
+  editChirp(event: any): void {
+    if (!this.userService.isAuthenticated()) return;
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.navigationService.navigate(['/edit-chirp'], {
       queryParams: {
         'chirp-id': this.chirp.chirpId
       }
