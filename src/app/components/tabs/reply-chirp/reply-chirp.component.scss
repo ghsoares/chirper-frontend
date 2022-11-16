@@ -20,6 +20,7 @@
 			border: none;
 			padding: 0;
 			margin-right: 16px;
+
 			.back-button-icon {
 				width: 16px;
 				height: 16px;
@@ -50,41 +51,69 @@
 	.tab-body {
 		padding: 0 8px;
 		flex-direction: column;
-		.reply-form {
-			.chirp-info {
-				margin-left: 8px;
-				flex-direction: column;
-				flex: 1;
-				align-items: stretch;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				.chirp-body {
-					background: none;
-					border: none;
-					resize: none;
-					color: var(--create-chirp-body-color);
-					font-size: 14px;
-					font-weight: 500;
-					outline: none;
-					border-bottom: 1px solid var(--create-chirp-body-border-color);
-					padding-bottom: 8px;
-					margin-bottom: 16px;
-				}
-				.chirp-button {
-					align-self: flex-start;
-					font-size: 16px;
-					font-weight: 700;
-					border: none;
-					padding: 4px 8px;
-					background-color: var(--create-chirp-send-background-color);
-					color: var(--create-chirp-send-color);
-					border-radius: 8px;
-					&:disabled {
-						opacity: 0.5;
+
+		#loading-chirp {
+			flex: 1;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+
+			#loading-title {
+				color: var(--loading-title-color);
+				font-size: 18px;
+				font-weight: 700;
+				margin-bottom: 16px;
+			}
+
+			.loading-spinner {
+				height: 64px;
+				--spinner-border-width: 8px;
+			}
+		}
+
+		#view-chirp {
+			flex: 1;
+			flex-direction: column;
+
+
+			.reply-form {
+				.chirp-info {
+					margin-left: 8px;
+					flex-direction: column;
+					flex: 1;
+					align-items: stretch;
+					overflow: hidden;
+					text-overflow: ellipsis;
+
+					.chirp-body {
+						background: none;
+						border: none;
+						resize: none;
+						color: var(--create-chirp-body-color);
+						font-size: 14px;
+						font-weight: 500;
+						outline: none;
+						border-bottom: 1px solid var(--create-chirp-body-border-color);
+						padding-bottom: 8px;
+						margin-bottom: 16px;
+					}
+
+					.chirp-button {
+						align-self: flex-start;
+						font-size: 16px;
+						font-weight: 700;
+						border: none;
+						padding: 4px 8px;
+						background-color: var(--create-chirp-send-background-color);
+						color: var(--create-chirp-send-color);
+						border-radius: 8px;
+
+						&:disabled {
+							opacity: 0.5;
+						}
 					}
 				}
 			}
 		}
 	}
 }
-

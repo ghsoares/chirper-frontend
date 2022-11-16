@@ -35,7 +35,7 @@ export class Chirp {
 				obj.author = new User(obj.author);
 			}
 			if (obj?.replyOf) {
-				obj.replyOf = new User(obj.replyOf);
+				obj.replyOf = new Chirp(obj.replyOf);
 			}
 			if (obj?.replies) {
 				obj.replies = obj.replies.map((c: any) => new Chirp(c));

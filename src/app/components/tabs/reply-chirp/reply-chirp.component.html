@@ -9,21 +9,27 @@
 	<span class="tab-title">Chirp something</span>
 </div>
 <div class="tab-body">
-	<chirp [chirp]="chirp"></chirp>
-	<div class="reply-form">
-		<img src="assets/img/user.svg" class="user-profile-pic" height="48px">
-		<div class="chirp-info">
-			<textarea 
-				name="chirp-body" 
-				cols="30" 
-				rows="5" 
-				class="chirp-body" 
-				placeholder="What you think of?"
-				[(ngModel)]="body"
-			></textarea>
-			<button class="chirp-button" (click)="reply()" [disabled]="body.length == 0 || waitReply">
-				Reply
-			</button>
+	<div id="loading-chirp" *ngIf="waitLoadChirp">
+		<span id="loading-title">Loading Chirp</span>
+		<div class="loading-spinner"></div>
+	</div>
+	<div id="view-chirp" *ngIf="!waitLoadChirp && chirp != null">
+		<chirp [chirp]="chirp"></chirp>
+		<div class="reply-form">
+			<img src="assets/img/user.svg" class="user-profile-pic" height="48px">
+			<div class="chirp-info">
+				<textarea 
+					name="chirp-body" 
+					cols="30" 
+					rows="5" 
+					class="chirp-body" 
+					placeholder="What you think of?"
+					[(ngModel)]="body"
+				></textarea>
+				<button class="chirp-button" (click)="reply()" [disabled]="body.length == 0 || waitReply">
+					Reply
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

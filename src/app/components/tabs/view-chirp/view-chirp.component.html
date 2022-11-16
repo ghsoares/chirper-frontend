@@ -13,6 +13,12 @@
 		<div class="loading-spinner"></div>
 	</div>
 	<div id="view-chirp" *ngIf="!waitLoadChirp && chirp != null">
+		<chirp 
+			[chirp]="chirp.replyOf" 
+			*ngIf="chirp.replyOf != null && chirp.replyOf != undefined"
+			[showAsReply]="true"
+			(click)="viewChirp(chirp.replyOf.chirpId)"
+		></chirp>
 		<chirp [chirp]="chirp"></chirp>
 		<span id="chirp-replies-title">Replies</span>
 		<div id="chirp-replies">

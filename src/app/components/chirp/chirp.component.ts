@@ -21,6 +21,9 @@ export class ChirpComponent implements OnInit, OnDestroy {
   updateInterval: NodeJS.Timeout = null;
 
   @Input()
+  showAsReply: boolean = false;
+
+  @Input()
   set chirp(val: Chirp) {
     this._chirp = val;
     this.loggedUserLiked = false;
