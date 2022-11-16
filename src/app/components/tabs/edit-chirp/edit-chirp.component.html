@@ -25,9 +25,9 @@
 				rows="5" 
 				class="chirp-body" 
 				placeholder="What's going on?"
-				[(ngModel)]="body"
+				[(ngModel)]="chirp.body"
 			></textarea>
-			<button class="chirp-button" (click)="save()" [disabled]="body.length == 0 || waitSave">
+			<button class="chirp-button" (click)="save()" [disabled]="chirp.body.length == 0 || waitSave">
 				Save
 			</button>
 		</div>

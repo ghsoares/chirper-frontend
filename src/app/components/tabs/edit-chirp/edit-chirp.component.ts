@@ -13,7 +13,7 @@ import { globals } from 'src/environments/environment';
 })
 export class EditChirpComponent implements OnInit {
 
-  body: string = "";
+  chirp: Chirp = null;
   waitLoadChirp: boolean = false;
   waitSave: boolean = false;
 
@@ -44,7 +44,7 @@ export class EditChirpComponent implements OnInit {
               }
 
               this.waitLoadChirp = false;
-              this.body = chirp.body;
+              this.chirp = chirp;
             },
             error: err => {
               this.alertService.error("Error when trying to load chirp", err.error?.message);
@@ -71,11 +71,12 @@ export class EditChirpComponent implements OnInit {
     */
     
     const chirp = new Chirp();
-    chirp.body = this.body;
+    chirp.chirpId = this.chirp.chirpId;
+    chirp.body = this.chirp.body;
 
     this.waitSave = true;
 
-    this.chirpService.createChirp(chirp).subscribe({
+    this.chirpService.updateChirp(chirp).subscribe({
       next: chirp => {
         this.waitSave = false;
         this.navigation.navigate(["/view-chirp"], {
