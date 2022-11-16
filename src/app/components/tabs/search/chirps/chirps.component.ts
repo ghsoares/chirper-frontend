@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chirp } from 'src/app/models/chirp';
 import { ChirpService } from 'src/app/services/chirp.service';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { AlertService } from 'src/app/ui/alert/alert.service';
 
 @Component({
   selector: 'tab-search-chirps',
@@ -24,7 +26,9 @@ export class ChirpsComponent implements OnInit {
   }
 
   constructor(
-    private chirpService: ChirpService
+    private chirpService: ChirpService,
+    private navigation: NavigationService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -41,9 +45,17 @@ export class ChirpsComponent implements OnInit {
         this.chirps = chirps;
       },
       error: err => {
-        console.error(err);
+        this.alertService.error("Error when trying to search", err.error?.message);
       }
     });
   }
 
+  viewChirp(chirpId: number): void {
+    console.log(chirpId);
+    this.navigation.navigate(['view-chirp'], {
+      queryParams: {
+        'chirp-id': chirpId
+      }
+    })
+  }
 }

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chirp } from 'src/app/models/chirp';
 import { ChirpService } from 'src/app/services/chirp.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { UserService } from 'src/app/services/user.service';
+import { AlertService } from 'src/app/ui/alert/alert.service';
 
 @Component({
   selector: 'app-create-chirp',
@@ -17,12 +19,13 @@ export class CreateChirpComponent implements OnInit {
   constructor(
     private userService: UserService,
     private chirpService: ChirpService,
-    private router: Router
+    private navigation: NavigationService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
     if (!this.userService.isAuthenticated()) {
-      this.router.navigate(['/login']);
+      this.navigation.navigate(['/login']);
     }
   }
 
@@ -47,14 +50,18 @@ export class CreateChirpComponent implements OnInit {
     this.chirpService.createChirp(chirp).subscribe({
       next: chirp => {
         this.waitCreate = false;
-        this.router.navigate(["/view-chirp"], {
-          queryParams: { chirpId: chirp.chirpId }
+        this.navigation.navigate(["/view-chirp"], {
+          queryParams: { 'chirp-id': chirp.chirpId }
         });
       },
       error: err => {
         this.waitCreate = false;
-        console.error(err);
+        this.alertService.error("Error when trying to create chirp", err.error?.message);
       }
-    })
+    });
+  }
+
+  goBack(): void {
+    this.navigation.back();
   }
 }

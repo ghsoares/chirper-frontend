@@ -1,1 +1,28 @@
-<p>view-chirp works!</p>
+<div 
+	class="tab-top"
+>
+	<button class="back-button" (click)="goBack()">
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Chirp</span>
+</div>
+<div class="tab-body">
+	<div id="loading-chirp" *ngIf="waitLoadChirp">
+		<span id="loading-title">Loading Chirp</span>
+		<div class="loading-spinner"></div>
+	</div>
+	<div id="view-chirp" *ngIf="!waitLoadChirp && chirp != null">
+		<chirp [chirp]="chirp"></chirp>
+		<span id="chirp-replies-title">Replies</span>
+		<div id="chirp-replies">
+			<div id="chirps-scroll">
+				<chirp 
+					*ngFor="let reply of chirp.replies" 
+					[chirp]="reply"
+					(click)="viewChirp(reply.chirpId)"
+				></chirp>
+			</div>
+		</div>
+	</div>
+</div>

@@ -5,42 +5,55 @@
 		border-bottom: 2px solid var(--chirp-border-color);
 	}
 
+	&:last-child {
+		margin-bottom: 32px;
+	}
+
 	.chirp-main {
 		margin-left: 8px;
 		flex-direction: column;
 		flex: 1;
 		align-items: stretch;
+		min-width: 0;
 
 		.chirp-header {
 			font-size: 14px;
+			min-width: 0;
 
-			.chirp-profile-name {
-				color: var(--user-profile-name-color);
-				font-weight: 700;
-				margin-right: 4px;
-				flex-wrap: nowrap;
-				max-width: 40%;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				display: unset;
+			.chirp-profile {
+				flex-direction: column;
+				min-width: 0;
+				.chirp-profile-name {
+					color: var(--user-profile-name-color);
+					font-weight: 700;
+					margin-right: 4px;
+					flex-wrap: nowrap;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					display: unset;
+					min-width: 0;
+				}
+	
+				.chirp-username {
+					color: var(--user-username-color);
+					font-weight: 600;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					display: unset;
+					min-width: 0;
+				}
 			}
 
-			.chirp-username {
-				color: var(--user-username-color);
-				font-weight: 600;
-				overflow: hidden;
-				max-width: 40%;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				display: unset;
-			}
 
 			.chirp-elapsed-time {
 				margin-left: auto;
 				color: var(--chirp-elapsed-time-color);
 				font-weight: 600;
+				white-space: nowrap;
+				min-width: auto;
 			}
 		}
 
@@ -57,7 +70,8 @@
 			::ng-deep .chirp-tag {
 				all: unset;
 				color: var(--chirp-text-tags-color);
-				font-weight: 700;
+				font-weight: 800;
+				font-size: 14px;
 			}
 		}
 
@@ -69,14 +83,19 @@
 				font-size: 14px;
 				font-weight: 700;
 				padding: 0;
+				align-items: center;
 
 				&:not(:last-child) {
 					margin-right: 16px;
 				}
 
+				&:disabled {
+					opacity: 0.5;
+				}
+
 				.chirp-option-icon {
-					width: 16px;
-					height: 16px;
+					width: 18px;
+					height: 18px;
 					background-color: var(--chirp-option-color);
 					mask-size: cover;
 					margin-right: 4px;
@@ -96,6 +115,13 @@
 						mask-image: url("/assets/img/options.svg");
 					}
 				}
+			}
+		}
+
+		&.chirp-liked .chirp-option-like {
+			.chirp-option-icon {
+				mask-image: url("/assets/img/like.svg");
+				background-color: var(--chirp-like-color) !important;
 			}
 		}
 	}

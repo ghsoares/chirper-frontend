@@ -1,20 +1,34 @@
 
 <img src="assets/img/user.svg" class="chirp-profile-pic" height="32px">
-<div class="chirp-main">
+<div 
+	class="chirp-main"
+	[ngClass]="{
+		'chirp-liked': loggedUserLiked
+	}"
+>
 	<div class="chirp-header">
-	<span class="chirp-profile-name">{{chirp.author.profileName}}</span>
-	<span class="chirp-username">@{{chirp.author.username}}</span>
-	<span class="chirp-elapsed-time">4h ago</span>
+		<div class="chirp-profile">
+			<span class="chirp-profile-name">{{chirp.author.profileName}}</span>
+			<span class="chirp-username">@{{chirp.author.username}}</span>
+		</div>
+		<span class="chirp-elapsed-time">{{elapsedDisplay}} ago</span>
 	</div>
-	<p class="chirp-body" [innerHTML]="body">
+	<p class="chirp-body" [innerHTML]="chirp.bodyHTML">
 	
 	</p>
 	<div class="chirp-options">
-	<button class="chirp-option chirp-option-comment">
+	<button 
+		class="chirp-option chirp-option-comment"
+		(click)="replyChirp($event)"
+	>
 		<div class="chirp-option-icon"></div>
 		<span class="chirp-option-text" *ngIf="chirp.replies.length > 0">{{chirp.replies.length}}</span>
 	</button>
-	<button class="chirp-option chirp-option-like">
+	<button 
+		class="chirp-option chirp-option-like"
+		(click)="likeChirp($event)"
+		[disabled]="waitLike"
+	>
 		<div class="chirp-option-icon"></div>
 		<span class="chirp-option-text"*ngIf="chirp.likes.length > 0">{{chirp.likes.length}}</span>
 	</button>

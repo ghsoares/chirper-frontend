@@ -4,6 +4,10 @@
 		<span class="empty-result-text">Try to change the search text</span>
 	</div>
 	<div class="result-container">
-		<chirp *ngFor="let chirp of chirps" [chirp]="chirp"></chirp>
+		<chirp 
+			*ngFor="let chirp of chirps" 
+			[chirp]="chirp"
+			(click)="viewChirp(chirp.chirpId)"
+		></chirp>
 	</div>
 </div>
