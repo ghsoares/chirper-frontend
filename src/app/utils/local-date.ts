@@ -18,6 +18,10 @@ export class LocalDate extends Date {
 	}
 
 	public static create(data: any): LocalDate {
+		// if (data instanceof LocalDate) {
+		// 	return new LocalDate(data.getTime());
+		// }
+
 		const utc = new Date(data);
 
 		return new LocalDate(utc.getTime() + utc.getTimezoneOffset() * 60000);
@@ -40,8 +44,18 @@ export class LocalDateTime extends Date {
 	}
 
 	public static create(data: any): LocalDateTime {
+		if (data instanceof LocalDateTime) {
+			return new LocalDateTime(data.getTime());
+		}
+
 		const utc = new Date(data);
 
 		return new LocalDateTime(utc.getTime() + utc.getTimezoneOffset() * 60000);
+	}
+
+	public static override now(): number {
+		const utc = new Date(Date.now());
+
+		return utc.getTime() + utc.getTimezoneOffset() * 60000;
 	}
 }
