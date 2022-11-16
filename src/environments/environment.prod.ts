@@ -11,7 +11,7 @@ type GlobalVariables = {
 
 export const environment: EnvironmentVariables = {
   production: true,
-  apiPath: "http://localhost:8080"
+  apiPath: "https://chirper.herokuapp.com/"
 };
 
 export const globals: GlobalVariables = {
