@@ -1,0 +1,10 @@
+<div id="alerts">
+	<div 
+		class="alert" 
+		*ngFor="let alert of alerts"
+		[ngClass]="['alert-' + alert.alertType]"
+	>
+		<span class="alert-title">{{alert.title}}</span>
+		<span class="alert-message">{{alert.message}}</span>
+	</div>
+</div>

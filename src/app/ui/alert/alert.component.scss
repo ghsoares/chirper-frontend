@@ -1,0 +1,53 @@
+:host {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 8px;
+	flex-direction: column;
+	align-items: flex-end !important;
+
+	pointer-events: none;
+
+	#alerts {
+		flex-direction: column;
+		align-items: stretch;
+
+		.alert {
+			padding: 8px 16px;
+			border-radius: 8px;
+			flex-direction: column;
+			background-color:  white;
+
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
+	
+			.alert-title {
+				color: var(--alert-title-color);
+				font-size: 16px;
+				font-weight: 700;
+			}
+	
+			.alert-message {
+				color: var(--alert-message-color);
+				font-size: 14px;
+				font-weight: 600;
+			}
+	
+			&.alert-success {
+				background-color: var(--alert-success-background-color);
+			}
+			&.alert-warning {
+				background-color: var(--alert-warning-background-color);
+			}
+			&.alert-info {
+				background-color: var(--alert-info-background-color);
+			}
+			&.alert-error {
+				background-color: var(--alert-error-background-color);
+			}
+		}
+	}
+}
