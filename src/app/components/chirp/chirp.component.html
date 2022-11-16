@@ -5,8 +5,15 @@
 		'chirp-reply': showAsReply
 	}"
 >
-	<div class="chirp-side">
-		<img src="assets/img/user.svg" class="chirp-profile-pic" height="32px">
+	<div 
+		class="chirp-side"
+	>
+		<img 
+			src="assets/img/user.svg" 
+			class="chirp-profile-pic" 
+			height="32px"
+			(click)="viewUser($event)"
+		>
 		<div class="chirp-reply-border" *ngIf="showAsReply"></div>
 	</div>
 	<div 
@@ -20,9 +27,16 @@
 				<span 
 					class="chirp-reply-text" 
 					*ngIf="chirp.replyOf != null && chirp.replyOf.author != null"
+					(click)="viewReply($event)"
 				>Replying to {{chirp.replyOf.author.username}}</span>
-				<span class="chirp-profile-name">{{chirp.author.profileName}}</span>
-				<span class="chirp-username">@{{chirp.author.username}}</span>
+				<span 
+					class="chirp-profile-name"
+					(click)="viewUser($event)"
+				>{{chirp.author.profileName}}</span>
+				<span 
+					class="chirp-username"
+					(click)="viewUser($event)"
+				>@{{chirp.author.username}}</span>
 			</div>
 			<span class="chirp-elapsed-time">{{elapsedDisplay}} ago</span>
 		</div>

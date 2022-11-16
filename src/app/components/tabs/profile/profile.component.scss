@@ -40,6 +40,25 @@
 		overflow: hidden;
 		position: relative;
 
+		#loading-user {
+			flex: 1;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+
+			#loading-title {
+				color: var(--loading-title-color);
+				font-size: 18px;
+				font-weight: 700;
+				margin-bottom: 16px;
+			}
+
+			.loading-spinner {
+				height: 64px;
+				--spinner-border-width: 8px;
+			}
+		}
+
 		#profile-scroll {
 			position: absolute;
 			left: 0;

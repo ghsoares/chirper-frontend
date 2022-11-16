@@ -3,7 +3,11 @@
 	<span class="tab-title">Profile</span>
 </div>
 <div class="tab-body" id="home-chirps">
-	<div id="profile-scroll">
+	<div id="loading-user" *ngIf="waitLoadUser">
+		<span id="loading-title">Loading User</span>
+		<div class="loading-spinner"></div>
+	</div>
+	<div id="profile-scroll" *ngIf="!waitLoadUser">
 		<div id="profile-banner">
 			<img src="assets/img/banner.png" alt="User's banner">
 		</div>
@@ -38,7 +42,11 @@
 		<span id="profile-followers">{{user.followers.length}} Followers</span>
 		<span id="profile-chirps-title">Chirps</span>
 		<div id="chirps-container">
-			<chirp *ngFor="let chirp of user.chirps" [chirp]="chirp"></chirp>
+			<chirp 
+				*ngFor="let chirp of user.chirps" 
+				[chirp]="chirp"
+				(click)="viewChirp(chirp.chirpId)"
+			></chirp>
 		</div>
 	</div>
 </div>

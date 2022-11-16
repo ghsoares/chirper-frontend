@@ -53,6 +53,14 @@ export class ViewUserComponent implements OnInit {
     })
   }
 
+  viewChirp(chirpId: number): void {
+    this.navigation.navigate(['view-chirp'], {
+      queryParams: {
+        'chirp-id': chirpId
+      }
+    })
+  }
+
   goBack(): void {
     this.navigation.back();
   }

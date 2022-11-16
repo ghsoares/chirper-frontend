@@ -129,6 +129,30 @@ export class ChirpComponent implements OnInit, OnDestroy {
     })
   }
 
+  viewReply(event: any): void {
+    if (this.chirp?.replyOf == undefined || this.chirp?.replyOf == null) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.navigationService.navigate(['/view-chirp'], {
+      queryParams: {
+        'chirp-id': this.chirp.replyOf.chirpId
+      }
+    })
+  }
+
+  viewUser(event: any): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.navigationService.navigate(['/view-user'], {
+      queryParams: {
+        'user-id': this.chirp.author.userId
+      }
+    })
+  }
+
   updateElapsedTime(): void {
     if (this._chirp == null) {
       this.elapsedDisplay = "";

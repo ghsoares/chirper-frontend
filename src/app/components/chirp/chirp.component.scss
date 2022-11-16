@@ -1,16 +1,19 @@
 :host {
-	.chirp-container {
-		flex: 1;
-		margin-bottom: 16px;
-
-		&:not(:last-child):not(.chirp-reply) {
+	&:not(:last-child) {
+		.chirp-container:not(.chirp-reply) {
 			padding-bottom: 16px;
 			border-bottom: 2px solid var(--chirp-border-color);
 		}
-
-		&:last-child:not(.chirp-reply) {
+	}
+	&:last-child {
+		.chirp-container:not(.chirp-reply) {
 			margin-bottom: 32px;
 		}
+	}
+
+	.chirp-container {
+		flex: 1;
+		margin-bottom: 16px;
 
 		&.chirp-reply {
 			opacity: 0.8;
