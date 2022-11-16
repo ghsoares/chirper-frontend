@@ -47,6 +47,7 @@ export class UsersComponent implements OnInit {
       },
       error: err => {
         this.alertService.error("Error when trying to search", err.error?.message);
+        console.error(err);
       }
     });
   }

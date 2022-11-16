@@ -82,12 +82,14 @@ export class UpdateUserInfoComponent implements OnInit {
           error: err => {
             this.waitSave = false;
             this.alertService.error("Error when trying to update profile", err.error?.message);
+            console.error(err);
           }
         })
       },
       error: err => {
         this.waitSave = false;
         this.alertService.error("Error when trying to update profile", err.error?.message);
+        console.error(err);
       }
     });
   }

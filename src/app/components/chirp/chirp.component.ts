@@ -85,6 +85,7 @@ export class ChirpComponent implements OnInit, OnDestroy {
         },
         error: err => {
           this.alertService.error("Error when trying to like", err.error?.message);
+          console.error(err);
           this.waitLike = false;
         }
       });
@@ -99,12 +100,14 @@ export class ChirpComponent implements OnInit, OnDestroy {
             },
             error: err => {
               this.alertService.error("Error when trying to unlike", err.error?.message);
+              console.error(err);
               this.waitLike = false;
             }
           })
         },
         error: err => {
           this.alertService.error("Error when trying to unlike", err.error?.message);
+          console.error(err);
           this.waitLike = false;
         }
       });

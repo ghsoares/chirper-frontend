@@ -47,6 +47,7 @@ export class ViewChirpComponent implements OnInit {
             },
             error: err => {
               this.alertService.error("Error when trying to load chirp", err.error?.message);
+              console.error(err);
               this.navigation.navigate(['/home']);
             }
           });

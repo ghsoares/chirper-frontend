@@ -42,6 +42,7 @@ export class ReplyChirpComponent implements OnInit {
             },
             error: err => {
               this.alertService.error("Error when trying to load chirp", err.error?.message);
+              console.error(err);
               this.navigation.navigate(['/home']);
             }
           });
@@ -71,6 +72,7 @@ export class ReplyChirpComponent implements OnInit {
       error: err => {
         this.waitReply = false;
         this.alertService.error("Error when trying to reply", err.error?.message);
+        console.error(err);
       }
     });
   }

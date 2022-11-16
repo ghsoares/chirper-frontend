@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
         },
         error: err => {
           this.waitAutoLogin = false;
+          console.error(err);
           this.alertService.error("Error when loading login", err.error?.message);
           this.navigation.navigate(['/login']);
         }

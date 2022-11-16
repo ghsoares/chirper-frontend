@@ -68,12 +68,14 @@ export class UserComponent {
             error: err => {
               this.waitFollow = false;
               this.alertService.error("Error when trying to follow", err.error?.message);
+              console.error(err);
             }
           })
         },
         error: err => {
           this.waitFollow = false;
           this.alertService.error("Error when trying to follow", err.error?.message);
+          console.error(err);
         }
       });
     } else {
@@ -88,12 +90,14 @@ export class UserComponent {
             error: err => {
               this.waitFollow = false;
               this.alertService.error("Error when trying to follow", err.error?.message);
+              console.error(err);
             }
           })
         },
         error: err => {
           this.waitFollow = false;
           this.alertService.error("Error when trying to unfollow", err.error?.message);
+          console.error(err);
         }
       });
     }

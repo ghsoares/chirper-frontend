@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
       },
       error: err => {
         this.alertService.error("Error when trying to get chirps", err.error?.message);
+        console.error(err);
       }
     });
   }

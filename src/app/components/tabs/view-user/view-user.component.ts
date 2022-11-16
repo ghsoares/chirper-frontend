@@ -44,6 +44,7 @@ export class ViewUserComponent implements OnInit {
             },
             error: err => {
               this.alertService.error("Error when trying to view user", err.error?.message);
+              console.error(err);
               this.navigation.navigate(['/home']);
             }
           });
@@ -75,12 +76,14 @@ export class ViewUserComponent implements OnInit {
             error: err => {
               this.waitFollow = false;
               this.alertService.error("Error when trying to follow", err.error?.message);
+              console.error(err);
             }
           })
         },
         error: err => {
           this.waitFollow = false;
           this.alertService.error("Error when trying to follow", err.error?.message);
+          console.error(err);
         }
       });
     } else {
@@ -95,12 +98,14 @@ export class ViewUserComponent implements OnInit {
             error: err => {
               this.waitFollow = false;
               this.alertService.error("Error when trying to follow", err.error?.message);
+              console.error(err);
             }
           })
         },
         error: err => {
           this.waitFollow = false;
           this.alertService.error("Error when trying to unfollow", err.error?.message);
+          console.error(err);
         }
       });
     }

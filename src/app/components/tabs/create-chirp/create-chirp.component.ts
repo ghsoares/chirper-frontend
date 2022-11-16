@@ -57,6 +57,7 @@ export class CreateChirpComponent implements OnInit {
       error: err => {
         this.waitCreate = false;
         this.alertService.error("Error when trying to create chirp", err.error?.message);
+        console.error(err);
       }
     });
   }

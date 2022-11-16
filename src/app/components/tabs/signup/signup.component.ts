@@ -80,6 +80,7 @@ export class SignupComponent implements OnInit {
           error: err => {
             this.waitSignup = false;
             this.alertService.error("Error when trying to login", err.error?.message);
+            console.error(err);
             this.navigation.navigate(['/login'])
           }
         });
@@ -87,6 +88,7 @@ export class SignupComponent implements OnInit {
       error: err => {
         this.waitSignup = false;
         this.alertService.error("Error when trying to signup", err.error?.message);
+        console.error(err);
       }
     });
   }

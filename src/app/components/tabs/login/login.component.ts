@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       error: err => {
         this.waitLogin = false;
         this.alertService.error("Error when trying to login", err.error?.message);
+        console.error(err);
       }
     });
   }

@@ -63,12 +63,14 @@ export class UpdateUserPasswordComponent implements OnInit {
           error: err => {
             this.waitChange = false;
             this.alertService.error("Error when trying to update password", err.error?.message);
+            console.error(err);
           }
         });
       },
       error: err => {
         this.waitChange = false;
         this.alertService.error("Error when trying to update password", err.error?.message);
+        console.error(err);
       }
     });
   }
