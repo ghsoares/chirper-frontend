@@ -10,7 +10,7 @@ export class User {
 	bio: string = "";
 	email: string = "";
 	password: string = "";
-	birthDate: LocalDate = new LocalDate(LocalDate.now());
+	birthDate: string = "";
 	chirps: Chirp[] = [];
 	followers: UserFollower[] = [];
 	follows: UserFollower[] = [];
@@ -52,9 +52,6 @@ export class User {
 	public assign(obj?: any): void {
 		if (!(obj instanceof User)) {
 			obj = { ...obj };
-			if (obj?.birthDate) {
-				obj.birthDate = LocalDate.create(obj.birthDate);
-			}
 			if (obj?.chirps) {
 				obj.chirps = obj.chirps.map((c: any) => new Chirp(c));
 			}
@@ -94,7 +91,7 @@ export class User {
 			bio: this.bio,
 			email: this.email,
 			password: this.password,
-			birthDate: this.birthDate.toString(),
+			birthDate: this.birthDate,
 			chirps: this.chirps.map(c => c.toJSON(false)),
 			likes: this.likes.map(l => l.toJSON(false)),
 			followers: this.followers.map(f => f.toJSON(false, true)),

@@ -7,6 +7,7 @@ import { Alert } from './alert.model';
 })
 export class AlertService {
   private subject = new BehaviorSubject<Alert>(null);
+  logOnError: boolean = true;
 
   onAlert(): Observable<Alert> {
     return this.subject.asObservable();
@@ -18,6 +19,10 @@ export class AlertService {
 
   error(title: string, message: string, options?: Partial<Alert>) {
     this.alert(new Alert({ ...options, alertType: "error", title, message }));
+    if (this.logOnError) {
+      console.error(title);
+      console.error(message);
+    }
   }
 
   info(title: string, message: string, options?: Partial<Alert>) {

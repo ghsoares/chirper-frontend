@@ -129,9 +129,9 @@ export class ChirpComponent implements OnInit, OnDestroy {
       return;
     }
 
-    let now = LocalDateTime.now();
+    let now = Date.now();
 
-    let diff = now - this._chirp.creationDate.getTime();
+    let diff = now - new Date(this._chirp.creationDate).getTime();
 
     diff /= 1000;
 

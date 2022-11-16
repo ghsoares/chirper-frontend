@@ -63,7 +63,7 @@ export class UpdateUserInfoComponent implements OnInit {
     user.username = formValue.username;
     user.email = formValue.email;
     user.bio = formValue.bio;
-    user.birthDate = LocalDate.fromString(formValue.birthDate);
+    user.birthDate = formValue.birthDate;
 
     this.waitSave = true;
 

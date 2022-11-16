@@ -8,8 +8,8 @@ export class Chirp {
 	chirpId: number = 0;
 	author: User = null;
 	bodyHTML: string = "";
-	creationDate: LocalDateTime = new LocalDateTime(LocalDateTime.now());
-	editDate: LocalDateTime = new LocalDateTime(LocalDateTime.now());
+	creationDate: string = "";
+	editDate: string = "";
 	tags: string[] = [];
 	replyOf: Chirp = null;
 	replies: Chirp[] = [];
@@ -33,12 +33,6 @@ export class Chirp {
 			obj = { ...obj };
 			if (obj?.author) {
 				obj.author = new User(obj.author);
-			}
-			if (obj?.creationDate) {
-				obj.creationDate = LocalDateTime.create(obj.creationDate);
-			}
-			if (obj?.editDate) {
-				obj.editDate = LocalDateTime.create(obj.editDate);
 			}
 			if (obj?.replyOf) {
 				obj.replyOf = new User(obj.replyOf);
@@ -71,8 +65,8 @@ export class Chirp {
 		const chirp: any = {
 			chirpId: this.chirpId,
 			body: this.body,
-			creationDate: this.creationDate.toString(),
-			editDate: this.editDate.toString(),
+			creationDate: this.creationDate,
+			editDate: this.editDate,
 			tags: this.tags,
 			replies: this.replies.map(r => r.toJSON(true, false)),
 			likes: this.likes.map(l => l.toJSON(true, false))

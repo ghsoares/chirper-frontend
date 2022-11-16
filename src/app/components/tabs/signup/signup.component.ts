@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
     user.profileName = formValue.profileName;
     user.username = username;
     user.email = formValue.email;
-    user.birthDate = LocalDate.fromString(formValue.birthDate);
+    user.birthDate = formValue.birthDate;
     user.password = password;
 
     this.waitSignup = true;
