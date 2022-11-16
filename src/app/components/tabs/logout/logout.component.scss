@@ -1,0 +1,78 @@
+:host {
+	flex: 1;
+	flex-direction: column;
+	align-items: stretch;
+
+	background-color: var(--tab-background-color);
+	border-radius: 8px;
+	padding-bottom: 8px;
+	position: relative;
+
+	.tab-top {
+		padding: 8px;
+		background-color: var(--tab-top-background-color);
+		border-radius: 8px;
+		margin-bottom: 8px;
+		align-items: center;
+
+		.tab-icon {
+			width: 16px;
+			height: 16px;
+			mask-image: url("/assets/img/home.svg");
+			mask-size: cover;
+			background-color: var(--tab-icon-color);
+		}
+
+		.tab-title {
+			color: var(--tab-title-color);
+			font-weight: 700;
+			font-size: 16px;
+			vertical-align: text-bottom;
+			line-height: 19px;
+			margin-left: 8px;
+		}
+	}
+
+	.tab-body {
+		flex: 1;
+		flex-direction: column;
+		align-items: stretch;
+		overflow: hidden;
+		position: relative;
+
+		#logout-title {
+			color: var(--logout-title-color);
+			font-size: 20px;
+			font-weight: 700;
+			justify-content: center;
+		}
+
+		#logout-buttons {
+			justify-content: center;
+			margin-top: 16px;
+			button {
+				&:not(:last-child) {
+					margin-right: 16px;
+				}
+
+				font-size: 16px;
+				font-weight: 700;
+				background: none;
+				padding: 4px 8px;
+				border:  none;
+				color: var(--logout-button-color);
+				border-radius: 8px;
+			}
+			#logout-no {
+				background-color: var(--logout-no-background-color);
+			}
+			#logout-yes {
+				background-color: var(--logout-yes-background-color);
+			}
+		}
+
+	}
+
+	
+}
+

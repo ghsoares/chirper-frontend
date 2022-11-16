@@ -18,12 +18,12 @@
 			font-size: 14px;
 			font-weight: 700;
 			margin-right: 4px;
-			max-width: 100%;
 			flex-wrap: nowrap;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			display: unset;
+			min-width: 0;
 		}
 
 		.user-username {
@@ -31,12 +31,12 @@
 			font-size: 14px;
 			font-weight: 700;
 			margin-right: 4px;
-			max-width: 100%;
 			flex-wrap: nowrap;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			display: unset;
+			min-width: 0;
 		}
 
 		.user-bio {
@@ -51,6 +51,8 @@
 		font-weight: 700;
 		background: none;
 		padding: 4px 8px;
+		border: none;
+		align-self: flex-start;
 		background-color: var(--main-button-background-color);
 		color: var(--main-button-color);
 		border-radius: 8px;

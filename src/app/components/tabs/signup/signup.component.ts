@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import CustomValidators from 'src/app/form-validators/CustomValidators';
 import { User } from 'src/app/models/user';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { UserService } from 'src/app/services/user.service';
+import { AlertService } from 'src/app/ui/alert/alert.service';
 import { LocalDate } from 'src/app/utils/local-date';
 
 @Component({
@@ -17,8 +19,9 @@ export class SignupComponent implements OnInit {
   waitSignup: boolean = false;
 
   constructor(
-    private router: Router,
-    private userService: UserService
+    private navigation: NavigationService,
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -51,23 +54,39 @@ export class SignupComponent implements OnInit {
     const formValue = this.userForm.value;
     const user = new User();
 
+    const username: string = formValue.username;
+    const password: string = formValue.password;
+
     user.profileName = formValue.profileName;
-    user.username = formValue.username;
+    user.username = username;
     user.email = formValue.email;
     user.birthDate = LocalDate.fromString(formValue.birthDate);
-    user.password = formValue.password;
+    user.password = password;
 
     this.waitSignup = true;
 
     this.userService.registerUser(user).subscribe({
       next: user => {
-        this.waitSignup = false;
-        this.userService.authUser(user);
-        this.router.navigate(["/home"]);
+        const loginUser = new User();
+        loginUser.username = username;
+        loginUser.password = password;
+        this.userService.loginUser(loginUser).subscribe({
+          next: user => {
+            this.waitSignup = false;
+            this.userService.setGlobalUser(user);
+            this.userService.rememberUser(User.fromUsernamePassword(username, password));
+            this.navigation.navigate(["/profile"]);
+          },
+          error: err => {
+            this.waitSignup = false;
+            this.alertService.error("Error when trying to login", err.error?.message);
+            this.navigation.navigate(['/login'])
+          }
+        });
       },
       error: err => {
         this.waitSignup = false;
-        console.error(err);
+        this.alertService.error("Error when trying to signup", err.error?.message);
       }
     });
   }

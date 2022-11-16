@@ -1,1 +1,139 @@
-<p>update-user-info works!</p>
+<div class="tab-top">
+	<button class="back-button"
+		(click)="goBack()"
+	>
+		<div class="back-button-icon"></div>
+	</button>
+	<div class="tab-icon"></div>
+	<span class="tab-title">Edit profile</span>
+</div>
+<div class="tab-body">
+	<form [formGroup]="userForm" (submit)="save()" id="edit-form">
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('profileName').invalid && userForm.get('profileName').dirty
+			}"
+		>
+			<label class="input-label" for="user-profile-name">Profile name</label>
+			<input 
+				class="input-field" 
+				type="text" 
+				name="user-profile-name" 
+				formControlName="profileName"
+				id="user-profile-name" 
+				placeholder="Name displayed on your account"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('profileName').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('profileName').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('username').invalid && userForm.get('username').dirty
+			}"
+		>
+			<label class="input-label" for="user-username">Username</label>
+			<input 
+				class="input-field" 
+				type="text" 
+				name="user-username" 
+				formControlName="username"
+				id="user-username" 
+				placeholder="Unique name for other to reach you"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('username').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('username').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('email').invalid && userForm.get('email').dirty
+			}"
+		>
+			<label class="input-label" for="user-email">Email</label>
+			<input 
+				class="input-field" 
+				type="email" 
+				name="user-email" 
+				formControlName="email"
+				id="user-email" 
+				placeholder="Your email you would like to use"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('email').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('email').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div class="input-container">
+			<label for="user-bio" class="input-label">Bio</label>
+			<textarea 
+				class="input-area"
+				formControlName="bio"
+				name="user-bio" 
+				id="user-bio" 
+				cols="30" 
+				rows="5"
+			></textarea>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('birthDate').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('birthDate').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		<div 
+			class="input-container"
+			[ngClass]="{
+				'invalid': userForm.get('birthDate').invalid && userForm.get('birthDate').dirty
+			}"
+		>
+			<label class="input-label" for="user-birth-date">Birth date</label>
+			<input 
+				class="input-field" 
+				type="date" 
+				formControlName="birthDate"
+				name="user-birth-date" 
+				id="user-birth-date"
+			/>
+			<div 
+				class="input-errors" 
+				*ngIf="userForm.get('birthDate').invalid"
+			>
+				<span 
+					class="input-error" 
+					*ngIf="userForm.get('birthDate').hasError('required')"
+				>This field is required</span>
+			</div>
+		</div>
+		
+		<!-- <button class="signup-send" (click)="signup()" [disabled]="body.length == 0"> -->
+		<div class="form-buttons">
+			<button class="edit-send" type="submit" [disabled]="!userForm.valid || waitSave">
+				Save
+			</button>
+		</div>
+	</form>
+</div>

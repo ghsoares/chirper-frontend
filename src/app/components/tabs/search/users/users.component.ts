@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chirp } from 'src/app/models/chirp';
 import { User } from 'src/app/models/user';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { UserService } from 'src/app/services/user.service';
+import { AlertService } from 'src/app/ui/alert/alert.service';
 
 @Component({
   selector: 'tab-search-users',
@@ -25,7 +27,9 @@ export class UsersComponent implements OnInit {
   }
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private navigation: NavigationService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +46,12 @@ export class UsersComponent implements OnInit {
         this.users = users;
       },
       error: err => {
-        console.error(err);
+        this.alertService.error("Error when trying to search", err.error?.message);
       }
     });
   }
 
+  viewUser(userId: number): void {
+    this.navigation.navigate(['/view-user'], { queryParams: { 'user-id': userId } });
+  }
 }

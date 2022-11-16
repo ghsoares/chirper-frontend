@@ -4,6 +4,13 @@
 	<span class="user-username">@{{user.username}}</span>
 	<p class="user-bio">{{user.bio}}</p>
 </div>
-<button class="user-follow">
-	Follow
+<button 
+	class="user-follow"
+	(click)="follow($event)"
+>
+	{{
+		isLoggedUser ? "Profile" : (
+			loggedUserFollows ? "Unfollow" : "Follow"
+		)
+	}}
 </button>

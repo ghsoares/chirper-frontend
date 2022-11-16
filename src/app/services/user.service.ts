@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { EMPTY, map, Observable, of } from 'rxjs';
 import { environment, globals } from 'src/environments/environment';
 import { User } from '../models/user';
+import { UserFollower } from '../models/user-follower';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class UserService {
     );
   }
 
+  public findById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiPath}/user/find?id=${encodeURIComponent(id)}`).pipe(
+      map(res => new User(res))
+    );
+  }
+
   public updateUser(user: User): Observable<User> {
     let options = {};
 
@@ -36,7 +43,7 @@ export class UserService {
       }
     }
 
-    return this.http.put<User>(`${this.apiPath}/user/update`, user, options).pipe(
+    return this.http.patch<User>(`${this.apiPath}/user/update`, user, options).pipe(
       map(res => new User(res))
     );
   }
@@ -51,23 +58,74 @@ export class UserService {
       }
     }
 
-    return this.http.put<User>(`${this.apiPath}/user/update-password?new-password=${newPassword}`, null, options).pipe(
+    return this.http.put<User>(`${this.apiPath}/user/update-password?new-password=${encodeURIComponent(newPassword)}`, null, options).pipe(
       map(res => new User(res))
     );
   }
 
+  public followUser(userId: number): Observable<UserFollower> {
+    let options = {};
+
+    if (this.isAuthenticated()) {
+      options = {
+        headers: new HttpHeaders()
+          .set("Authorization", globals.user.token)
+      }
+    }
+
+    return this.http.put<UserFollower>(`${this.apiPath}/user/follow?user-id=${encodeURIComponent(userId)}`, null, options).pipe(
+      map(res => {
+        console.log(res);
+        return new UserFollower(res);
+      })
+    );
+  }
+
+  public unfollowUser(userId: number): Observable<UserFollower> {
+    let options = {};
+
+    if (this.isAuthenticated()) {
+      options = {
+        headers: new HttpHeaders()
+          .set("Authorization", globals.user.token)
+      }
+    }
+
+    return this.http.put<UserFollower>(`${this.apiPath}/user/unfollow?user-id=${encodeURIComponent(userId)}`, null, options).pipe(
+      map(res => {
+        console.log(res);
+        return new UserFollower(res);
+      })
+    );
+  }
+
   public searchByQuery(query: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiPath}/user/search?query=${query}`).pipe(
+    return this.http.get<User[]>(`${this.apiPath}/user/search?query=${encodeURIComponent(query)}`).pipe(
       map(res => res.map(v => new User(v)))
     );
   }
 
-  public authUser(user: User): void {
+  public setGlobalUser(user: User): void {
     globals.user = user;
   }
 
-  public logoutUser(): void {
-    globals.user = null;
+  public rememberUser(user: User): void {
+    localStorage.setItem("__REMEMBER_USER", JSON.stringify({
+      username: user.username,
+      password: user.password
+    }));
+  }
+
+  public loadRememberedUser(): User {
+    const userString: string = localStorage.getItem("__REMEMBER_USER");
+    if (userString != null) {
+      return new User(JSON.parse(userString));
+    }
+    return null;
+  }
+
+  public forgetUser(): void {
+    localStorage.removeItem("__REMEMBER_USER");
   }
 
   public isAuthenticated(): boolean {

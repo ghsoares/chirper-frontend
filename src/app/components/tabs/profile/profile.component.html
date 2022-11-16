@@ -1,0 +1,44 @@
+<div class="tab-top">
+	<div class="tab-icon"></div>
+	<span class="tab-title">Profile</span>
+</div>
+<div class="tab-body" id="home-chirps">
+	<div id="profile-scroll">
+		<div id="profile-banner">
+			<img src="assets/img/banner.png" alt="User's banner">
+		</div>
+		<div id="profile-header">
+			<div id="profile-info">
+				<div id="profile-info-top">
+					<div id="profile-img">
+						<img src="assets/img/user.png" alt="User's profile picture">
+					</div>
+					<div id="profile-buttons">
+						<button 
+							class="profile-button"
+							id="profile-button-edit"
+							(click)="edit()"
+						>
+							<div class="profile-button-icon"></div>
+						</button>
+						<button 
+							class="profile-button"
+							id="profile-button-logout"
+							(click)="logout()"
+						>
+							<div class="profile-button-icon"></div>
+						</button>
+					</div>
+				</div>
+				<span id="profile-name">{{user.profileName}}</span>
+				<span id="profile-username">@{{user.username}}</span>
+			</div>
+		</div>
+		<p id="profile-bio">{{user.bio}}</p>
+		<span id="profile-followers">{{user.followers.length}} Followers</span>
+		<span id="profile-chirps-title">Chirps</span>
+		<div id="chirps-container">
+			<chirp *ngFor="let chirp of user.chirps" [chirp]="chirp"></chirp>
+		</div>
+	</div>
+</div>

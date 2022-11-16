@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { UserService } from 'src/app/services/user.service';
+import { AlertService } from 'src/app/ui/alert/alert.service';
 import { LocalDate } from 'src/app/utils/local-date';
 
 @Component({
@@ -16,8 +18,9 @@ export class LoginComponent implements OnInit {
   waitLogin: boolean = false;
 
   constructor(
-    private router: Router,
-    private userService: UserService
+    private navigation: NavigationService,
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -37,21 +40,24 @@ export class LoginComponent implements OnInit {
     const formValue = this.userForm.value;
     const user = new User();
 
-    user.username = formValue.username;
-    user.password = formValue.password;
+    const username: string = formValue.username;
+    const password: string = formValue.password;
+
+    user.username = username;
+    user.password = password;
 
     this.waitLogin = true;
 
     this.userService.loginUser(user).subscribe({
       next: user => {
-        console.log(user.birthDate.getFullYear());
         this.waitLogin = false;
-        this.userService.authUser(user);
-        this.router.navigate(["/home"]);
+        this.userService.setGlobalUser(user);
+        this.userService.rememberUser(User.fromUsernamePassword(username, password));
+        this.navigation.navigate(["/home"]);
       },
       error: err => {
         this.waitLogin = false;
-        console.error(err);
+        this.alertService.error("Error when trying to login", err.error?.message);
       }
     });
   }

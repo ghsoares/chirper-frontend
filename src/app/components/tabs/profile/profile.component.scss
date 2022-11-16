@@ -15,21 +15,6 @@
 		margin-bottom: 8px;
 		align-items: center;
 
-		.back-button {
-			background: none;
-			border: none;
-			padding: 0;
-			margin-right: 16px;
-
-			.back-button-icon {
-				width: 16px;
-				height: 16px;
-				mask-image: url("/assets/img/back.svg");
-				mask-size: cover;
-				background-color: var(--back-button-color);
-			}
-		}
-
 		.tab-icon {
 			width: 16px;
 			height: 16px;
@@ -136,18 +121,6 @@
 										mask-image: url("/assets/img/logout.svg");
 									}
 								}
-							}
-
-							.user-follow {
-								font-size: 16px;
-								font-weight: 700;
-								background: none;
-								padding: 4px 8px;
-								border: none;
-								align-self: flex-start;
-								background-color: var(--main-button-background-color);
-								color: var(--main-button-color);
-								border-radius: 8px;
 							}
 						}
 					}
