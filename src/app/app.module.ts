@@ -20,6 +20,9 @@ import { ReplyChirpComponent } from './components/tabs/reply-chirp/reply-chirp.c
 import { ViewUserComponent } from './components/tabs/view-user/view-user.component';
 import { UpdateUserInfoComponent } from './components/tabs/update-user-info/update-user-info.component';
 import { UpdateUserPasswordComponent } from './components/tabs/update-user-password/update-user-password.component';
+import { LogoutComponent } from './components/tabs/logout/logout.component';
+import { ProfileComponent } from './components/tabs/profile/profile.component';
+import { AlertModule } from './ui/alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -38,14 +41,17 @@ import { UpdateUserPasswordComponent } from './components/tabs/update-user-passw
     ReplyChirpComponent,
     ViewUserComponent,
     UpdateUserInfoComponent,
-    UpdateUserPasswordComponent
+    UpdateUserPasswordComponent,
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
